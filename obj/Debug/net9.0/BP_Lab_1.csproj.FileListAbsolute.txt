@@ -25,3 +25,4 @@ C:\BP_Lab_1\obj\Debug\net9.0\refint\BP_Lab_1.dll
 C:\BP_Lab_1\obj\Debug\net9.0\BP_Lab_1.pdb
 C:\BP_Lab_1\obj\Debug\net9.0\BP_Lab_1.genruntimeconfig.cache
 C:\BP_Lab_1\obj\Debug\net9.0\ref\BP_Lab_1.dll
+C:\BP_Lab_1\obj\Debug\net9.0\BP_Lab_1.sourcelink.json

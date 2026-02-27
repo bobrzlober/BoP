@@ -30,7 +30,7 @@ class Program
             }
             counts[value]++;
             total ++;
-            Console.WriteLine($"  [{stopwatch.Elapsed.TotalSeconds:F2}s]  " + $"#{total,-4}  →  {value}  (seen {counts[value]}x)");
+            Console.WriteLine($"  [{stopwatch.Elapsed.TotalSeconds:F4}s]  " + $"#{total,-4}  →  {value}  (seen {counts[value]}x)");
         }
     }
     static void Main()
