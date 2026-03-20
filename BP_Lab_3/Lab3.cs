@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+namespace Lab3;
 public enum EvictionPolicy
 {
     LRU,
@@ -11,7 +12,7 @@ public enum EvictionPolicy
 public class Lab3<TKey, TValue> where TKey : notnull
 {
     Dictionary<TKey, (TValue result, DateTime LastUsed, int hits)> cache = new Dictionary<TKey, (TValue result, DateTime LastUsed, int hits)>();
-    Func<IEnumerable<Tkey>, Tkey>? _customEviction;
+    Func<IEnumerable<TKey>, TKey>? _customEviction;
     Func<TKey, TValue>_fn;
     EvictionPolicy _policy;
     public Lab3
@@ -42,13 +43,14 @@ public class Lab3<TKey, TValue> where TKey : notnull
             if(cache.ContainsKey(n))
             {
                 Console.WriteLine($"taking {n} from cache");
-                cache[n] = (cache[n].result, DateTime.Now, cache[n].hits ++);
+                var entry = cache[n];
+                cache[n] = (entry.result, DateTime.Now, entry.hits + 1);
                 return cache[n].result; 
             }
 
         }
 
-        Console.WriteLine($"calculating {fn}");
+        Console.WriteLine($"calculating {n}");
         TValue result = _fn(n);
 
         if (cache.Count >= 3)
