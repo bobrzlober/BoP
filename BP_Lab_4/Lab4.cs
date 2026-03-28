@@ -94,7 +94,7 @@ class BiDirectionalPriorityQueue
             Node current = head;
             while (current != null)
             {
-                if (current.Priority > lowest.Priority)
+                if (current.Priority < lowest.Priority)
                     lowest = current;
                 current = current.Next;
             }
@@ -125,6 +125,64 @@ class BiDirectionalPriorityQueue
                 current = current.Next;
             }
             RemoveNode(newest);
+            return newest;
+        }
+        return null;
+    }
+
+    public Node Peek(DequeueMode mode)
+    {
+        if (head == null)
+        {
+            Console.WriteLine("the List is empty");
+            return null;
+        }
+        else if (mode == DequeueMode.Highest)
+        {
+            Node best = head;
+            Node current = head;
+            while (current != null)
+            {
+                if (current.Priority > best.Priority)
+                    best = current;
+                current = current.Next;
+            }
+            return best;
+        }
+        else if (mode == DequeueMode.Lowest)
+        {
+            Node lowest = head;
+            Node current = head;
+            while (current != null)
+            {
+                if (current.Priority < lowest.Priority)
+                    lowest = current;
+                current = current.Next;
+            }
+            return lowest;
+        }
+        else if (mode == DequeueMode.Oldest)
+        {
+            Node oldest = head;
+            Node current = head;
+            while (current != null)
+            {
+                if (current.InsertionOrder < oldest.InsertionOrder)
+                    oldest = current;
+                current = current.Next;
+            }
+            return oldest;
+        }
+        else if (mode == DequeueMode.Newest)
+        {
+            Node newest = head;
+            Node current = head;
+            while (current != null)
+            {
+                if (current.InsertionOrder > newest.InsertionOrder)
+                    newest = current;
+                current = current.Next;
+            }
             return newest;
         }
         return null;
